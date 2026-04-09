@@ -1,0 +1,35 @@
+# Composer dependencies
+/vendor/
+
+# Composer lock file (optional, but usually committed)
+/composer.lock
+
+# PHPStorm / JetBrains IDE
+.idea/
+
+# VSCode
+.vscode/
+
+# Logs and temporary files
+*.log
+*.cache
+*.tmp
+*.swp
+
+# PHPUnit
+.phpunit.result.cache
+
+# Coverage reports
+coverage/
+*.cov
+*.cover
+coverage.xml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local

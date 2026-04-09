@@ -1,0 +1,21 @@
+{
+    "name": "arefshojaei/routex",
+    "description": "A minimal PHP framework for base file routing",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Routex\\": "core/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArefShojaei",
+            "email": "arefshojaei82@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : ">7.4"
+    }
+}
