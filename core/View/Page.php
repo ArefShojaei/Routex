@@ -3,6 +3,7 @@
 namespace Routex\View;
 
 use InvalidArgumentException;
+use Routex\Http\Request;
 use Routex\Contracts\{
     Page as IPage,
     BaseController
@@ -18,6 +19,6 @@ final class Page implements IPage {
             throw new InvalidArgumentException("Invalid controller class!");
         }
 
-        return call_user_func($instnace);
+        return call_user_func($instnace, Request::capture());
     }
 }
