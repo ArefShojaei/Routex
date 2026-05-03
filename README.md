@@ -106,9 +106,10 @@ final class Product {
 namespace App\Controllers;
 
 use Routex\Contracts\BaseController;
+use Routex\Http\Request;
 
 final class ProductController implements BaseController {
-    public function __invoke(): array
+    public function __invoke(Request $request): array
     {
         return [
             "id" => 1,
