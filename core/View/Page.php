@@ -9,6 +9,8 @@ use Routex\Contracts\{
 };
 
 final class Page implements IPage {
+    public const NOT_FOUND = "/404";
+
     public static function resolve(string $controller): array {
         $instnace = new $controller;
 
