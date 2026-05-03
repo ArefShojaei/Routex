@@ -2,9 +2,10 @@
 
 namespace Routex\Routing;
 
+use Routex\Constants\PageMessage;
 use Routex\Http\Request;
 use Routex\Utils\{Config, FileSystem};
-use Routex\View\Renderer;
+use Routex\View\{Renderer, Page};
 use Routex\Contracts\{
     Singleton,
     Router as IRouter
@@ -39,6 +40,16 @@ final class Router implements IRouter, Singleton {
             if ($matches) break;
         }
 
+        if (!count($matches) && array_key_exists(Page::NOT_FOUND, $this->routes)) {
+            Renderer::render($this->routes[Page::NOT_FOUND]);
+        
+            return;
+        }
+
+        if (!count($matches) && !array_key_exists(Page::NOT_FOUND, $this->routes)) {
+            die(PageMessage::NOT_FOUND);
+        }
+
         Renderer::render($pointer);
     }
 
@@ -69,10 +80,6 @@ final class Router implements IRouter, Singleton {
             }
 
             $route = $root . $path;
-
-            if (strlen($route) > 1) {
-                $route = rtrim($route, "/");
-            }
 
             $this->addRoute($route, $pointer);
         }
