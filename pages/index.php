@@ -38,7 +38,7 @@
 
         <div class="col-md-4">
         <div class="feature">
-        <h6 class="mb-2">File Based Routing</h6>
+        <h2 class="mb-2">File Based Routing</h2>
         <p class="text-secondary mb-0">
         Routes are generated directly from the <strong>pages</strong> folder structure.
         </p>
@@ -47,7 +47,7 @@
 
         <div class="col-md-4">
         <div class="feature">
-        <h6 class="mb-2">MVC Architecture</h6>
+        <h2 class="mb-2">MVC Architecture</h2>
         <p class="text-secondary mb-0">
         Pages handle the <strong>View layer</strong> while Models and Controllers manage logic and data.
         </p>
@@ -56,7 +56,7 @@
 
         <div class="col-md-4">
         <div class="feature">
-        <h6 class="mb-2">Clean Structure</h6>
+        <h2 class="mb-2">Clean Structure</h2>
         <p class="text-secondary mb-0">
         Organized project layout similar to modern frameworks.
         </p>
@@ -69,7 +69,7 @@
 
         <section class="section container">
 
-        <h5 class="mb-3">Example Routing</h5>
+        <h3 class="mb-3">Example Routing</h3>
 
         <div class="code">
         pages/
@@ -102,7 +102,7 @@
 
         <section class="section container">
 
-        <h5 class="mb-3">MVC Project Structure</h5>
+        <h3 class="mb-3">MVC Project Structure</h3>
 
         <div class="code">
         Project
