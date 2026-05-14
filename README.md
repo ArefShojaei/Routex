@@ -86,10 +86,10 @@ Soon...
 namespace App\Models;
 
 final class Product {
-    public function __construct(
-        public string $title,
-        public float $price
-    ) {}
+    public string $title,
+    public float $price
+
+    public function __construct(string $title, float $price) {}
 
     public function find() {...}
     public function save() {...}
