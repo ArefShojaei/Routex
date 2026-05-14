@@ -12,6 +12,10 @@ use Routex\Contracts\{
 };
 
 final class Router implements IRouter, Singleton {
+    private const ROOT = "/";
+    
+    private const INDEX = "index";
+
     private static ?self $instance = null;
 
     private array $routes;
@@ -71,11 +75,11 @@ final class Router implements IRouter, Singleton {
             $path = $meta["filename"];
             $pointer = $file;
 
-            if ($root !== "/") {
-                $root .= "/";
+            if ($root !== self::ROOT) {
+                $root .= self::ROOT;
             }
 
-            if ($path === "index") {
+            if ($path === self::INDEX) {
                 $path = null;
             }
 
