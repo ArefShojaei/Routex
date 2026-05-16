@@ -65,6 +65,17 @@ composer create-project arefshojaei/routex my-app
 git clone https://github.com/ArefShojaei/Routex/Routex.git
 ```
 
+## Setup
+> Move to the folder
+```bash
+cd my-app
+```
+
+> Install dependencies
+```bash
+composer install
+```
+
 ## How to run the App?
 You can use two ways for running such as:
 > Built-in PHP web-server
