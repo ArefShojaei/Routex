@@ -3,6 +3,13 @@
     "description": "A minimal PHP framework for base file routing",
     "type": "project",
     "license": "MIT",
+    "keywords": [
+        "routing",
+        "router",
+        "file",
+        "framework"
+    ],
+    "prefer-stable": true,
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
