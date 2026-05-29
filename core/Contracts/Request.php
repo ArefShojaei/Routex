@@ -18,4 +18,16 @@ interface Request {
     public function platform(): string;
 
     public function header(string $key): ?string;
+
+    public function query(string $key): ?string;
+    
+    public function input(string $key): mixed;
+    
+    public function body(): mixed;
+
+    public function session(string $key, $default = null): mixed;
+
+    public function cookie(string $key, $default = null): mixed;
+
+    public function file(string $key): mixed;
 }
