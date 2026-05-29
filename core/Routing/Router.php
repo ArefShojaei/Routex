@@ -38,8 +38,10 @@ final class Router implements IRouter, Singleton {
     public function dispatch(Request $request): void {
         foreach ($this->routes as $route => $pointer) {
             $pattern = "/^" . str_replace(["/","[", "]"], ["\/","(?<", ">.+)"], $route) ."$/";
-        
-            preg_match($pattern, $request->uri(), $matches);
+
+            $requestRoute = $this->getRequestRouteFromURI($request->uri());
+
+            preg_match($pattern, $requestRoute, $matches);
 
             if ($matches) break;
         }
@@ -87,5 +89,9 @@ final class Router implements IRouter, Singleton {
 
             $this->addRoute($route, $pointer);
         }
+    }
+
+    private function getRequestRouteFromURI(string $uri): string {
+        return parse_url($uri, PHP_URL_PATH);
     }
 }
