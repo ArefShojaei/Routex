@@ -28,7 +28,7 @@
         <section class="hero container">
         <h1>Next.js Style Routing <span>for PHP</span></h1>
         <p class="subtitle mt-3">
-        A lightweight file‑based routing system inspired by Next.js, built with PHP and structured around the MVC architecture.
+        A lightweight PHP starter framework with file-based routing inspired by Next.js, built with PHP and structured around the MVC architecture.
         </p>
         </section>
 

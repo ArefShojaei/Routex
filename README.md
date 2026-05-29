@@ -2,7 +2,7 @@
     <img src="docs/Logo.png" width="350" />
 </div>
 <h1 align="center">PHP File based Routing</h1>
-<p>A lightweight file‑based Routing system inspired by Next.js, built with PHP and structured around the MVC architecture.</p>
+<p>A lightweight PHP starter framework with file-based routing inspired by Next.js, built with PHP and structured around the MVC architecture.</p>
 
 
 ## Routing patterns
