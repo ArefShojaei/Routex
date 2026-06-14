@@ -108,6 +108,8 @@
         Project
         |
         ├── app/
+        │   ├── Console/
+        │   |    └── Commands/
         │   ├── Controllers/
         │   └── Models/
         |

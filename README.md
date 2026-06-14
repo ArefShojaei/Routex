@@ -34,6 +34,8 @@ pages/
 Project
 |
 ├── app/
+│   ├── Console/
+│   |    └── Commands/
 │   ├── Controllers/
 │   └── Models/
 |
@@ -50,6 +52,7 @@ Project
 │
 ├── vendor/
 ├── .gitignore
+├── cli
 ├── composer.json
 └── README.md
 ```
@@ -77,15 +80,16 @@ composer install
 ```
 
 ## How to run the App?
-You can use two ways for running such as:
+You can use this way for running the App:
 > Built-in PHP web-server
 ```bash
-php -S [host]:[port] -t public/
-```
+# Default 
+php cli serve
 
-> Apache web-server
-```txt
-Soon...
+# With Options
+php cli serve --host={host} --port={port}
+php cli serve --host={host}
+php cli serve --port={port}
 ```
 
 ## How to use the MVC?
@@ -157,3 +161,22 @@ extract(Page::resolve(ProductController::class));
 </body>
 </html>
 ```
+
+### Command (Optional)
+> app/console/commands/ExampleCommand.php
+```php
+<?php
+
+namespace App\Console\Commands;
+
+use PhpX\Components\Console\Command;
+
+final class ExampleCommand extends Command {
+    public function exec(array $params): string
+    {
+        # Command Logic
+    }
+}
+```
+
+Done.
