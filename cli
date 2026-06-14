@@ -1,0 +1,23 @@
+<?php
+
+require_once __DIR__. "/vendor/autoload.php";
+
+use PhpX\Components\Console\App as Console;
+
+use App\Console\Commands\{
+    ApplicationStarterCommand,
+    RouteListCommand
+};
+
+$console = new Console;
+
+$console->group("serve", function($console) {
+    $console->command("", new ApplicationStarterCommand);
+    $console->command(" --host={host}", new ApplicationStarterCommand);
+    $console->command(" --port={port}", new ApplicationStarterCommand);
+    $console->command(" --host={host} --port={port}", new ApplicationStarterCommand);
+});
+
+$console->command("route --list", new RouteListCommand);
+
+$console->launch();
