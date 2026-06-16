@@ -1,49 +1,75 @@
-<div align="center">
-    <img src="docs/Logo.png" width="350" />
-</div>
-<h1 align="center">PHP File-based Routing</h1>
-<p>A lightweight PHP starter framework with file-based routing inspired by Next.js, built with PHP and structured around the MVC architecture.</p>
+# 🚀 Routex - PHP File-based Routing Framework
+
+[![PHP Version](https://img.shields.io/badge/PHP-%5E8.0-blue.svg)](https://php.net)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![GitHub](https://img.shields.io/badge/github-Anchor-black?logo=github)](https://github.com/ArefShojaei/Anchor)
+
+A lightweight and modern PHP framework with <b>file-based routing</b> inspired by Next.js, designed around the MVC architecture and developer-friendly CLI tools.
+
+Build fast PHP applications with automatic routing, controllers, models, views, and custom commands.
 
 
-## Routing patterns
+<img width="1200" height="900" alt="Routex" src="https://github.com/user-attachments/assets/95536577-b33b-48b2-a901-8b2d5afdc9dd" />
+
+---
+
+## ✨ Features
+
+* 🗂️ **File-based Routing** - Create routes using the file system structure
+* ⚡ **Dynamic Routes** - Support for parameterized routes like `/products/:id`
+* 🏗️ **MVC Architecture** - Organized structure with Models, Controllers, and Views
+* 🧩 **Controller Injection** - Connect views to controllers seamlessly
+* 🖥️ **Built-in Development Server** - Run your application with a simple CLI command
+* 🔧 **Custom CLI Commands** - Extend your application with your own console commands
+* 📦 **Composer Support** - Easy installation and dependency management
+* 🪶 **Lightweight & Fast** - Minimal core with zero unnecessary complexity
+
+---
+
+# 🛣️ File-based Routing
+
+Routex automatically converts your `pages/` directory into application routes.
+
+Example:
+
 ```txt
 pages/
-|
-├── index.php                →  /
-├── about.php                →  /about
-├── auth
-|   |     
-│   ├── login.php            →  /auth/login
-│   └── register.php         →  /auth/register
-| 
-├── products 
-|   |     
-│   ├── index.php            →  /products
-│   └── [id].php             →  /products/:id
-| 
-├── admin  
-|   |    
-│   └── [id]
-|       |
-│       └── dashboard.php    →  /admin/:id/dashboard
-|
+│
+├── index.php                 → /
+├── about.php                 → /about
+│
+├── auth/
+│   ├── login.php             → /auth/login
+│   └── register.php          → /auth/register
+│
+├── products/
+│   ├── index.php             → /products
+│   └── [id].php              → /products/:id
+│
+└── admin/
+    └── [id]/
+        └── dashboard.php     → /admin/:id/dashboard
 ```
 
-### Folder structure (MVC)
+---
+
+# 🏗️ Project Structure (MVC)
+
 ```txt
-Project
-|
+Routex/
+│
 ├── app/
 │   ├── Console/
-│   |    └── Commands/
+│   │   └── Commands/
+│   │
 │   ├── Controllers/
 │   └── Models/
-|
+│
 ├── config/
-│   └── app.php
+│   ├── app.php
 │   └── database.php
 │
-├── pages/        (Views)
+├── pages/                    # Views
 │   └── index.php
 │
 ├── public/
@@ -51,70 +77,137 @@ Project
 │   └── index.php
 │
 ├── vendor/
-├── .gitignore
 ├── cli
 ├── composer.json
 └── README.md
 ```
 
-## Installation
-> Composer
+---
+
+# 📥 Installation & Setup
+
+## Requirements
+
+* PHP 8.0 or higher
+* Composer
+
+---
+
+## Install using Composer
+
 ```bash
 composer create-project arefshojaei/routex my-app
 ```
 
-> Github
-```bash
-git clone https://github.com/ArefShojaei/Routex/Routex.git
-```
+Move into your project:
 
-## Setup
-> Move to the folder
 ```bash
 cd my-app
 ```
 
-> Install dependencies
+---
+
+## Clone from GitHub
+
+```bash
+git clone https://github.com/ArefShojaei/Routex.git
+cd Routex
+```
+
+Install dependencies:
+
 ```bash
 composer install
 ```
 
-## How to run the App?
-You can use this way for running the App:
-> Built-in PHP web-server
-```bash
-# Default 
-php cli serve
+---
 
-# With Options
-php cli serve --host={host} --port={port}
-php cli serve --host={host}
-php cli serve --port={port}
+# 🚀 Running the Application
+
+Routex comes with a built-in PHP development server.
+
+### Default
+
+```bash
+php cli serve
 ```
 
-## How to use the MVC?
-### Model
-> app/Models/Post.php
+### Custom Host
+
+```bash
+php cli serve --host:0.0.0.0
+```
+
+### Custom Port
+
+```bash
+php cli serve --port:3000
+```
+
+### Custom Host & Port
+
+```bash
+php cli serve --host:0.0.0.0 --port:3000
+```
+
+After running the server, open:
+
+```txt
+http://localhost:8000
+```
+
+---
+
+# 🧠 MVC Usage
+
+## 📦 Model
+
+**File:** `app/Models/Product.php`
+
 ```php
 <?php
 
 namespace App\Models;
 
-final class Product {
+final class Product
+{
     public string $title;
     public float $price;
 
-    public function __construct(string $title, float $price) {}
+    public function __construct(string $title, float $price)
+    {
+        $this->title = $title;
+        $this->price = $price;
+    }
 
-    public function find() {...}
-    public function save() {...}
-    public function update() {...}
-    public function remove() {...}
+    public function find()
+    {
+        // Find data
+    }
+
+    public function save()
+    {
+        // Save data
+    }
+
+    public function update()
+    {
+        // Update data
+    }
+
+    public function remove()
+    {
+        // Delete data
+    }
 }
 ```
 
-### Controller
-> app/Controllers/PostController.php
+---
+
+## 🎮 Controller
+
+**File:** `app/Controllers/ProductController.php`
+
 ```php
 <?php
 
@@ -123,20 +216,25 @@ namespace App\Controllers;
 use Routex\Contracts\BaseController;
 use Routex\Http\Request;
 
-final class ProductController implements BaseController {
+final class ProductController implements BaseController
+{
     public function __invoke(Request $request): array
     {
         return [
             "id" => 1,
             "title" => "Book",
-            "price" => 99,
+            "price" => 99
         ];
     }
 }
 ```
 
-### View
-> app/pages/post.php
+---
+
+## 🎨 View
+
+**File:** `pages/product.php`
+
 ```php
 <?php
 
@@ -144,26 +242,34 @@ use App\Controllers\ProductController;
 use Routex\View\Page;
 
 extract(Page::resolve(ProductController::class));
+
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product page</title>
+    <title>Product Page</title>
 </head>
 <body>
-    <div>
-        <span><?= $id ?></span> 
-        <h3><?= $title ?></h3>
-        <p><?= $price ?></p>
-    </div>
+    <span><?= $id ?></span>
+    <h3><?= $title ?></h3>
+    <p><?= $price ?></p>
 </body>
 </html>
 ```
 
-### Command (Optional)
-> app/console/commands/ExampleCommand.php
+---
+
+# 💻 Custom CLI Commands (Optional)
+
+Create your own commands inside:
+
+```txt
+app/Console/Commands/
+```
+
+Example:
+
 ```php
 <?php
 
@@ -171,12 +277,69 @@ namespace App\Console\Commands;
 
 use PhpX\Components\Console\Command;
 
-final class ExampleCommand extends Command {
+final class ExampleCommand extends Command
+{
     public function exec(array $params): string
     {
-        # Command Logic
+        // Command logic
+        return "Command executed successfully!";
     }
 }
 ```
 
-Done.
+---
+
+# 🔥 Why Routex?
+
+Routex provides a simple yet powerful development experience:
+
+* No complex route configuration
+* Familiar file-based routing system
+* Clean MVC separation
+* Simple CLI workflow
+* Lightweight and easy to understand
+* Perfect for small to medium PHP projects and learning purposes
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome.
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Add amazing feature"
+```
+
+4. Push your branch
+
+```bash
+git push origin feature/amazing-feature
+```
+
+5. Open a Pull Request
+
+---
+
+# 👨‍💻 Author
+
+**Aref Shojaei**
+- 📧 Email: [arefshojaei82@gmail.com](mailto:arefshojaei82@gmail.com)
+- 🐙 GitHub: [@ArefShojaei](https://github.com/ArefShojaei)
+- 📦 Packagist: [arefshojaei/kitdash](https://packagist.org/packages/arefshojaei/routex)
+
+---
+
+# ⭐ Show Your Support
+
+If Routex helps you in your projects, consider giving the repository a **Star ⭐** on GitHub.
+
+Your support motivates further development and improvements.
