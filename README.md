@@ -2,7 +2,7 @@
 
 [![PHP Version](https://img.shields.io/badge/PHP-%5E8.0-blue.svg)](https://php.net)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/github-Anchor-black?logo=github)](https://github.com/ArefShojaei/Anchor)
+[![GitHub](https://img.shields.io/badge/github-Routex-black?logo=github)](https://github.com/ArefShojaei/Routex)
 
 A lightweight and modern PHP framework with <b>file-based routing</b> inspired by Next.js, designed around the MVC architecture and developer-friendly CLI tools.
 
