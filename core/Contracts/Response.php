@@ -2,7 +2,8 @@
 
 namespace Routex\Contracts;
 
-interface Response {
+interface Response
+{
     public function status(int $code): self;
 
     public function header(string $key, string $value): self;

@@ -5,7 +5,8 @@ require_once dirname(__DIR__) . "/vendor/autoload.php";
 use Routex\Http\Request;
 use Routex\Routing\Router;
 
-function bootstrap(): void {
+function bootstrap(): void
+{
     session_start();
 
     $router = Router::getInstance();
@@ -14,6 +15,5 @@ function bootstrap(): void {
 
     $router->dispatch($request);
 }
-
 
 bootstrap();

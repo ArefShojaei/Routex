@@ -4,7 +4,8 @@ namespace Routex\Http;
 
 use Routex\Contracts\Response as IResponse;
 
-final class Response implements IResponse {
+final class Response implements IResponse
+{
     # HTTP Success code
     public const HTTP_OK = 200;
     public const HTTP_CREATED = 201;
@@ -34,22 +35,24 @@ final class Response implements IResponse {
     public const HTTP_SERVICE_UNAVAILABLE = 503;
     public const HTTP_GATEWAY_TIMEOUT = 504;
 
-
-    public function status(int $code): self {
+    public function status(int $code): self
+    {
         http_response_code($code);
-        
+
         return $this;
     }
 
-    public function header(string $key, string $value): self {
+    public function header(string $key, string $value): self
+    {
         header("{$key}: {$value}");
-        
+
         return $this;
     }
 
-    public function redirect(string $to): void {
+    public function redirect(string $to): void
+    {
         header("Location: {$to}");
 
-        exit;
+        exit();
     }
 }

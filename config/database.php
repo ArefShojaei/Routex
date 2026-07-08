@@ -8,6 +8,6 @@ return [
             "username" => "",
             "password" => "",
             "database" => "",
-        ]
-    ]
+        ],
+    ],
 ];

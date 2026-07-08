@@ -2,6 +2,7 @@
 
 namespace Routex\Contracts;
 
-interface Config {
+interface Config
+{
     public static function get(string $pattern): mixed;
 }

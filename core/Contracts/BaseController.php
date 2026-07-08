@@ -4,7 +4,8 @@ namespace Routex\Contracts;
 
 use Routex\Http\Request;
 
-interface BaseController {
+interface BaseController
+{
     /**
      * Define the View data
      */

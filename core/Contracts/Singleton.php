@@ -2,6 +2,7 @@
 
 namespace Routex\Contracts;
 
-interface Singleton {
+interface Singleton
+{
     public static function getInstance(): self;
 }

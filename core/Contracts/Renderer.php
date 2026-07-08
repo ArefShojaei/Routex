@@ -2,6 +2,7 @@
 
 namespace Routex\Contracts;
 
-interface Renderer {
+interface Renderer
+{
     public static function render(string $view): void;
 }

@@ -2,6 +2,7 @@
 
 namespace Routex\Contracts;
 
-interface Page {
+interface Page
+{
     public static function resolve(string $controller): array;
 }

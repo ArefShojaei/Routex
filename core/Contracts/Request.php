@@ -2,7 +2,8 @@
 
 namespace Routex\Contracts;
 
-interface Request {
+interface Request
+{
     public static function capture(): self;
 
     public function method(): string;
@@ -10,7 +11,7 @@ interface Request {
     public function uri(): string;
 
     public function ip(): string;
-    
+
     public function host(): string;
 
     public function agent(): string;
@@ -20,9 +21,9 @@ interface Request {
     public function header(string $key): ?string;
 
     public function query(string $key): ?string;
-    
+
     public function input(string $key): mixed;
-    
+
     public function body(): mixed;
 
     public function session(string $key, $default = null): mixed;
