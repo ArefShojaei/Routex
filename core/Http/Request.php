@@ -6,56 +6,67 @@ use Routex\Contracts\Request as IRequest;
 
 final class Request implements IRequest
 {
+    public function __construct(private RequestContext $context) {}
+
     public static function capture(): self
     {
-        return new static();
+        $context = new RequestContext(
+            $_SERVER,
+            $_GET,
+            $_POST,
+            $_SESSION,
+            $_COOKIE,
+            $_FILES,
+        );
+
+        return new static($context);
     }
 
     public function method(): string
     {
-        return $_SERVER["REQUEST_METHOD"];
+        return $this->context->server["REQUEST_METHOD"];
     }
 
     public function uri(): string
     {
-        return $_SERVER["REQUEST_URI"];
+        return $this->context->server["REQUEST_URI"];
     }
 
     public function ip(): string
     {
-        return $_SERVER["REMOTE_ADDR"] ??
-            ($_SERVER["HTTP_CLIENT_IP"] ??
-                ($_SERVER["HTTP_X_FORWARDED_FOR"] ?? "unknown"));
+        return $this->context->server["REMOTE_ADDR"] ??
+            ($this->context->server["HTTP_CLIENT_IP"] ??
+                ($this->context->server["HTTP_X_FORWARDED_FOR"] ?? "unknown"));
     }
 
     public function host(): string
     {
-        return $_SERVER["HTTP_HOST"];
+        return $this->context->server["HTTP_HOST"];
     }
 
     public function agent(): string
     {
-        return $_SERVER["HTTP_USER_AGENT"] ?? "";
+        return $this->context->server["HTTP_USER_AGENT"] ?? "";
     }
 
     public function platform(): string
     {
-        return $_SERVER["HTTP_SEC_CH_UA_PLATFORM"];
+        return $this->context->server["HTTP_SEC_CH_UA_PLATFORM"];
     }
 
     public function header(string $key): ?string
     {
-        return $_SERVER[$key] ?? null;
+        return $this->context->server[$key] ?? null;
     }
 
     public function query(string $key, $default = null): ?string
     {
-        return $_GET[$key] ?? $default;
+        return $this->context->queryParams[$key] ?? $default;
     }
 
     public function input(string $key, $default = null): mixed
     {
-        return $_POST[$key] ?? $default;
+        return $this->context->bodyParams[$key] ?? $default;
     }
 
     public function body(): mixed
@@ -77,16 +88,18 @@ final class Request implements IRequest
             return $default;
         }
 
-        return isset($_SESSION[$key]) ? $_SESSION[$key] : $default;
+        return isset($this->context->sessionParams[$key])
+            ? $this->context->sessionParams[$key]
+            : $default;
     }
 
     public function cookie(string $key, $default = null): mixed
     {
-        return $_COOKIE[$key] ?? $default;
+        return $this->context->cookieParams[$key] ?? $default;
     }
 
     public function file(string $key): mixed
     {
-        return $_FILES[$key] ?? null;
+        return $this->context->fileParams[$key] ?? null;
     }
 }
