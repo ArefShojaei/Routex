@@ -51,8 +51,27 @@ final class Response implements IResponse
 
     public function redirect(string $to): void
     {
-        header("Location: {$to}");
+        $this->header("Location", $to);
+    }
 
-        exit();
+    public function json(array $data): void
+    {
+        $this->header("Content-Type", "application/json; charset=UTF-8");
+
+        echo json_encode($data);
+    }
+
+    public function text(string $content): void
+    {
+        $this->header("Content-type", "text/plain; charset=UTF-8");
+
+        echo $content;
+    }
+
+    public function html(string $html): void
+    {
+        $this->header("Content-type", "text/html; charset=UTF-8");
+
+        echo $html;
     }
 }
